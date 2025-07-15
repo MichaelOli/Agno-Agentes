@@ -48,4 +48,7 @@ aplicacao = Playground(
 ).get_app()
 
 if __name__ == "__main__":
+    print("Gerando embeddings com o Google Gemini...")
+    knowledge.load(recreate=True)
+    print(" Embeddings gerados com sucesso!")
     serve_playground_app("pdf_agente:aplicacao", reload=True)
