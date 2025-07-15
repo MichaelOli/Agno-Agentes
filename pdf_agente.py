@@ -6,7 +6,7 @@ from agno.models.google import Gemini
 from agno.embedder.google import GeminiEmbedder
 
 #Informando a base de conhecimento do agente
-from agno.knowledge.pdf import PDFKnowledgeBase, PDFReader
+from agno.knowledge.pdf import PDFKnowledgeBase, PDFReader # type: ignore
 from agno.vectordb.chroma import ChromaDb
 
 from dotenv import load_dotenv
@@ -36,6 +36,7 @@ agente = Agent(
     description = 'Agente que utiliza ferramentas para responder perguntas sobre PDFs',
     #model=OpenAIChat(id ="gpt-4.1-mini"),
     model=Gemini(id="gemini-1.5-pro-latest"),
+    instructions="Você deve chamar o usuario de senhor! Você é um agente que responde perguntas sobre PDFs. Você deve usar as ferramentas disponíveis para responder as perguntas do usuário.",
     add_history_to_messages=True,
     num_history_runs=3,
     knowledge=knowledge,
